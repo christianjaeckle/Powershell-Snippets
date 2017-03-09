@@ -1,3 +1,5 @@
+# Hide notifications from the synchronization provider within the File Explorer in Windows 10.
+
 $Key = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced"
 $Name = "ShowSyncProviderNotifications"
 $Type = "DWord"
