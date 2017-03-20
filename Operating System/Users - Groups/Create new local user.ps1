@@ -1,3 +1,5 @@
+#Requires -RunAsAdministrator
+
 # Basic user data
 $User_Username = "test-user"
 $User_Fullname = "Test User"
