@@ -1,3 +1,5 @@
+#Requires -RunAsAdministrator
+
 # Set the timezone to German time.
 Set-TimeZone -Name "W. Europe Standard Time"
 
