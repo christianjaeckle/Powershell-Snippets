@@ -1,3 +1,5 @@
+#Requires -RunAsAdministrator
+
 $ServiceName = "HomeGroupProvider"
 $ServiceStartup = "Automatic" # Possible values: Automatic, Boot, Disabled, Manual, System
 
