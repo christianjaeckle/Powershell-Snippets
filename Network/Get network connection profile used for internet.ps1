@@ -1,0 +1,1 @@
+Get-NetConnectionProfile -IPv4Connectivity Internet
