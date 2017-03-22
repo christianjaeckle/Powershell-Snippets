@@ -1,0 +1,2 @@
+# Disable WER
+Disable-WindowsErrorReporting
