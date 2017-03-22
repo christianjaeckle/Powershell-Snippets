@@ -1,5 +1,5 @@
 # Load Assembly
-[system.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms") | Out-Null
+#[system.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms") | Out-Null
 
 # Create forms object
 $Notifca = New-Object System.Windows.Forms.NotifyIcon
