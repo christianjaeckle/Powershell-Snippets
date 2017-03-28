@@ -29,5 +29,3 @@ else
 
 # Remove drive
 Remove-PSDrive -Name "HKCR"
-
-Write-Verbose -Message "Script end."
