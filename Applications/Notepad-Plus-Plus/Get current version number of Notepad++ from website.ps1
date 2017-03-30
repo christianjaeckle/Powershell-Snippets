@@ -8,7 +8,7 @@ if( (Test-NetConnection -ComputerName "notepad-plus-plus.org" -CommonTCPPort HTT
     if($Website.StatusCode -eq 200) {
         Write-Verbose -Message "Got website content."
 
-        $CurrentVersion = (($Website.AllElements | Where-Object { $_.OuterText -like "Download*" -and $_.tagName -eq "P" }).InnerText).Split(":")[1].Substring(1)
+        $CurrentVersion = (($Website.AllElements | Where-Object { $_.outerText -like "Download*" -and $_.tagName -eq "P" }).innerText).Split(":")[1].Substring(1)
         $CurrentVersion
     }
     else {
