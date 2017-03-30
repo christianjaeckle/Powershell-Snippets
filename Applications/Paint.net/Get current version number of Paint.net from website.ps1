@@ -8,7 +8,7 @@ if( (Test-NetConnection -ComputerName "getpaint.net" -CommonTCPPort HTTP).TcpTes
     if($Website.StatusCode -eq 200) {
         Write-Verbose -Message "Got website content."
 
-        $CurrentVersion = (($Website.AllElements | Where-Object { $_.InnerHTML -clike "paint.net*.*.*"}).InnerHTML).Substring(10)
+        $CurrentVersion = (($Website.AllElements | Where-Object { $_.innerHTML -clike "paint.net*.*.*"}).innerHTML).Substring(10)
         $CurrentVersion
     }
     else {
