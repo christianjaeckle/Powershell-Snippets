@@ -13,8 +13,8 @@ if( (Test-NetConnection -ComputerName "mozilla.org" -CommonTCPPort HTTP).TcpTest
         [int]$PosFirstMinus = $Url.IndexOf("-") + 1
         [int]$PosLastMinus = $Url.LastIndexOf("-")
                 
-        $Url.Substring($PosFirstMinus,($PosLastMinus - $PosFirstMinus))
-
+        $CurrentVersion = $Url.Substring($PosFirstMinus,($PosLastMinus - $PosFirstMinus))
+        $CurrentVersion
     }
     else {
         Write-Verbose -Message "Got no website content!"
