@@ -16,3 +16,9 @@ $IsAdmin = $UserIdentity.IsInRole([System.Security.Principal.SecurityIdentifier]
 if (-not($IsAdmin)) {
     Write-Warning -Message "Not an admin."
 }
+
+# OR
+
+if (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
+    Write-Warning -Message "Not an admin."
+}
