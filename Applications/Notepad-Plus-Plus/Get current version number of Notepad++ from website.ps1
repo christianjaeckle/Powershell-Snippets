@@ -1,5 +1,5 @@
 # Checking if website is available
-if( (Test-NetConnection -ComputerName notepad-plus-plus.org -CommonTCPPort HTTP).TcpTestSucceeded -eq $true ) {
+if( (Test-NetConnection -ComputerName "notepad-plus-plus.org" -CommonTCPPort HTTP).TcpTestSucceeded -eq $true ) {
     Write-Verbose -Message "Website is available."
 
     # Request website content
