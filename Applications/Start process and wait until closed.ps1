@@ -1,2 +1,2 @@
-Start-Process Notepad -wait
+Start-Process Notepad -Wait
 Write-Host "Notepad closed"
