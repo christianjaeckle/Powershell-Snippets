@@ -1,0 +1,2 @@
+ 	
+Get-LocalGroupMember -Group Administratoren
