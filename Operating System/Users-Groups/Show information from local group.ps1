@@ -1,0 +1,1 @@
+Get-LocalGroup -Name "Administratoren"
