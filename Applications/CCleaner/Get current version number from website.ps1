@@ -8,7 +8,8 @@ if( (Test-NetConnection -ComputerName "piriform.com" -CommonTCPPort HTTP).TcpTes
     if($Website.StatusCode -eq 200) {
         Write-Verbose -Message "Got website content."
 
-        $CurrentVersion = (($Website.AllElements | Where-Object { $_.outerText -like "v*" -and $_.tagName -eq "h6" }).innerText)
+        $Content = (($Website.AllElements | Where-Object { $_.outerText -like "v*" -and $_.tagName -eq "h6" }).innerText)
+        
         $CurrentVersion
     }
     else {
