@@ -8,12 +8,12 @@ if( (Test-NetConnection -ComputerName "7-zip.org" -CommonTCPPort HTTP).TcpTestSu
     if($Website.StatusCode -eq 200) {
         Write-Verbose -Message "Got website content."
 
-        $Url = ($Website.AllElements | Where-Object { ($_.TagName -eq "b") -and ($_.innerText -like "Download 7-Zip*") }).innerText
+        $Content = ($Website.AllElements | Where-Object { ($_.TagName -eq "b") -and ($_.innerText -like "Download 7-Zip*") }).innerText
 
-        [int]$PosFirstMinus = $Url.IndexOf("p") + 2
-        [int]$PosLastMinus = $Url.LastIndexOf("(") - 1
+        [int]$PosFirstMinus = $Content.IndexOf("p") + 2
+        [int]$PosLastMinus = $Content.LastIndexOf("(") - 1
         
-        $CurrentVersion = $Url.Substring($PosFirstMinus,($PosLastMinus - $PosFirstMinus))
+        $CurrentVersion = $Content.Substring($PosFirstMinus,($PosLastMinus - $PosFirstMinus))
         $CurrentVersion
     }
     else {
