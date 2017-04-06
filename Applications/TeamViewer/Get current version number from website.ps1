@@ -8,9 +8,9 @@ if( (Test-NetConnection -ComputerName "teamviewer.com" -CommonTCPPort HTTP).TcpT
     if($Website.StatusCode -eq 200) {
         Write-Verbose -Message "Got website content."
 
-        $Url = ( $Website.ParsedHtml.getElementsByTagName("p") | Where-Object { $_.className -eq "DownloadVersion" } ).innerText
+        $Content = ( $Website.ParsedHtml.getElementsByTagName("p") | Where-Object { $_.className -eq "DownloadVersion" } ).innerText
                 
-        $CurrentVersion = $Url.Replace("v","")
+        $CurrentVersion = $Content.Replace("v","")
         $CurrentVersion
     }
     else {
