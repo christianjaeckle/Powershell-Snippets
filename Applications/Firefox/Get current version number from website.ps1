@@ -8,12 +8,12 @@ if( (Test-NetConnection -ComputerName "mozilla.org" -CommonTCPPort HTTP).TcpTest
     if($Website.StatusCode -eq 200) {
         Write-Verbose -Message "Got website content."
 
-        $Url = ($Website.Links | Where-Object { ($_.innerHTML -eq "Windows 64-bit") -and ($_.href -like "*?product=firefox-*") } | Select-Object -Property href -Unique).href
+        $Content = ($Website.Links | Where-Object { ($_.innerHTML -eq "Windows 64-bit") -and ($_.href -like "*?product=firefox-*") } | Select-Object -Property href -Unique).href
 
-        [int]$PosFirstMinus = $Url.IndexOf("-") + 1
-        [int]$PosLastMinus = $Url.LastIndexOf("-")
+        [int]$PosFirstMinus = $Content.IndexOf("-") + 1
+        [int]$PosLastMinus = $Content.LastIndexOf("-")
                 
-        $CurrentVersion = $Url.Substring($PosFirstMinus,($PosLastMinus - $PosFirstMinus))
+        $CurrentVersion = $Content.Substring($PosFirstMinus,($PosLastMinus - $PosFirstMinus))
         $CurrentVersion
     }
     else {
