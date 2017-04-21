@@ -38,3 +38,6 @@ Remove-Item -Path "HKCR:\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}" -Recurse 
 Remove-Item -Path "HKCR:\Wow6432Node\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}" -Recurse -Force
 
 Remove-PSDrive -Name "HKCR" -Force | Out-Null
+
+Write-Output "Delete relicts from start menu..."
+Remove-Item -Path "$env:appdata\Microsoft\Windows\Start Menu\Programs\OneDrive.lnk" -Force -ErrorAction SilentlyContinue
