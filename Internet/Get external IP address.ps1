@@ -2,3 +2,6 @@
 
 $IPAddr = Invoke-RestMethod -Uri http://checkip.amazonaws.com/
 Write-Host $IPAddr
+
+# OR
+(Invoke-WebRequest 'http://myip.dnsomatic.com' -UseBasicParsing).Content
