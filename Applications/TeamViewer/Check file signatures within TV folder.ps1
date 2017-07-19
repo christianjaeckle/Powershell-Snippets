@@ -1,4 +1,4 @@
-$TVFiles = Get-ChildItem -Path "${env:ProgramFiles(x86)}\TeamViewer" -Recurse -Include *.exe,*.dll,*.cat
+$TVFiles = Get-ChildItem -Path "${env:ProgramFiles(x86)}\TeamViewer","${env:ProgramFiles}\TeamViewer" -Recurse -Include *.exe,*.dll,*.cat
 
 $TVFiles | Foreach-Object {
     $CheckResult = Get-AuthenticodeSignature -FilePath $_.FullName
