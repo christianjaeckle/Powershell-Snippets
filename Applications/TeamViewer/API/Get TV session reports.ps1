@@ -2,7 +2,7 @@
 [string]$Script_BaseName = (Get-Item $PSCommandPath ).Basename # Name of this script
 [string]$TV_APIUri = "https://webapi.teamviewer.com" # Url of the TeamViewer API
 [string]$TV_APIVersion = "v1" # Version of the TeamViewer API
-[string]$TV_APIToken = "4227221-oij5J7BM0EV4fiH15guF" # Token (company or user) for the TeamViewer API
+[string]$TV_APIToken = "YOURTOKEN" # Token (company or user) for the TeamViewer API
 
 # Define request header for auth
 $Headers = @{}
