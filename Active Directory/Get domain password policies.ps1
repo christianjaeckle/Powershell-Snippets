@@ -1,0 +1,1 @@
+(Get-DomainPolicy).'SystemAccess'
