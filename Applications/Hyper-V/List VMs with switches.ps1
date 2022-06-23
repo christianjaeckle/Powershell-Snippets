@@ -1,0 +1,1 @@
+Get-VM | Select-Object @{ N='VMName'; E={ $_.Name }},@{ N='Switch'; E={ $_.NetworkAdapters.Switchname} },@{ N='IPAddresses'; E={ $_.Networkadapters.IPAddresses } } | Sort-Object Switch | Select-Object Switch, VMName, IPAddresses
