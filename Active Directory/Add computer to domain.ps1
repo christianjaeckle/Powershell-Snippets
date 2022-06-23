@@ -1,1 +1,1 @@
-Add-Computer -credential DOMAIN\Administrator -DomainName DOMAINNAME
+Add-Computer -Credential (Get-Credential) -DomainName DOMAINNAME
