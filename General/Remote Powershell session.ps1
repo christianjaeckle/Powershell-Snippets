@@ -1,4 +1,4 @@
-$Session = New-PSSession -ComputerName GK30WS-Pierre
+$Session = New-PSSession -ComputerName PCNAME
 Enter-PSSession $Session
 
 # Show remote process
