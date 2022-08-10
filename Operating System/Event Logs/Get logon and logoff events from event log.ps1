@@ -1,45 +1,48 @@
+# Open Filter Security Event Log and to track user logon session, set filter Security Event Log for the following Event ID’s:
+
 function Get-LogonHistory {
     Param (
-        [string]$Computer = (Read-Host Computername),
-        [int]$Days = 10
+        [int]$Days = 7
     )
 
     $Result = @()
-
-    Write-Verbose "Checking results..."
-    
-    $ELogs = Get-EventLog System -Source Microsoft-Windows-WinLogon -After (Get-Date).AddDays(-$Days) -ComputerName $Computer
+    $ELogs = Get-EventLog System -Source Microsoft-Windows-WinLogon -After (Get-Date).AddDays(-$Days)
 
     if ($ELogs) {
-        Write-Verbose "Workup is running..."
-        
         foreach ($Log in $ELogs) {
-            if ($Log.InstanceId -eq 7001) {
-                $ET = "Logon"
+            # Logon – 4624 (An account was successfully logged on) 
+            # Logoff – 4647 (User initiated logoff) 
+            # Startup – 6005 (The Event log service was started) 
+            # RDP Session Reconnect – 4778 (A session was reconnected to a Window Station) 
+            # RDP Session Disconnect – 4779 (A session was disconnected from a Window Station) 
+            # Locked – 4800 (The workstation was locked) 
+            # Unlocked – 4801 (The workstation was unlocked)
+
+            if ($Log.InstanceId -eq 4624) {
+                $ET = 'Logon'
             }
             elseif ($Log.InstanceId -eq 7002) {
-                $ET = "Logoff"
+                $ET = 'Logoff'
+            }
+            elseif ($Log.InstanceId -eq 4800) {
+                $ET = 'Locked'
+            }
+            elseif ($Log.InstanceId -eq 4801) {
+                $ET = 'Unlocked'
             }
             else {
                 Continue
             }
             
             $Result += New-Object PSObject -Property @{
-                Time = $Log.TimeWritten.ToString("yyyy-MM-dd HH:mm")
-                "Event Type" = $ET
-                User = (New-Object System.Security.Principal.SecurityIdentifier $Log.ReplacementStrings[1]).Translate([System.Security.Principal.NTAccount])
+                Time         = $Log.TimeWritten.ToString('yyyy-MM-dd HH:mm')
+                'Event Type' = $ET
+                User         = (New-Object System.Security.Principal.SecurityIdentifier $Log.ReplacementStrings[1]).Translate([System.Security.Principal.NTAccount])
             }
         }
         
-        $Result | Select Time, "Event Type", User | Sort Time -Descending | Format-Table
-        
-        Write-Verbose "Done."
-    }
-    else {
-        Write-Verbose "Problem with $Computer."
-		Write-Verbose "Maybe there are no logon/logoff events."
-        Write-Verbose "If you see a 'Network path not found' error, try start the Remote Registry service on that computer."
+        $Result | Select-Object Time, 'Event Type', User | Sort-Object Time -Descending | Format-Table
     }
 }
 
-Get-LogonHistory -Computer $env:COMPUTERNAME -Days 7
+Get-LogonHistory -Days 3
