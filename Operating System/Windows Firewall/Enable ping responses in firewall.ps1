@@ -1,3 +1,5 @@
+#Requires -RunAsAdministrator
+
 # Enable whole group
 Set-NetFirewallRule -DisplayName "File and Printer Sharing (Echo Request – ICMPv4-In)" -Enabled True
 
