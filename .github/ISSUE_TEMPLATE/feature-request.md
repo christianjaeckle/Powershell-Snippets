@@ -3,7 +3,7 @@ name: Feature Request
 about: Create a feature request
 title: "[Feature]"
 labels: Feature
-assignees: ''
+assignees: christianjaeckle
 
 ---
 
