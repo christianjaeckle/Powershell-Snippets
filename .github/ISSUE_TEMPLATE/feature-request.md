@@ -1,7 +1,7 @@
 ---
 name: Feature Request
 about: Create a feature request
-title: "[Feature]"
+title: "[Feature] "
 labels: Feature
 assignees: christianjaeckle
 
