@@ -1,0 +1,1 @@
+Get-LocalUser | Where-Object { ($_.LastLogon -ne $null) -or ($_.LastLogon -ne '') -and ($_.LastLogon -le ((Get-Date).AddDays(-90))) -and ($_.Enabled -eq $true) } | Select-Object -Property Name, LastLogon
