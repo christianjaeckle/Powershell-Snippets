@@ -1,3 +1,5 @@
+#Requires -RunAsAdministrator
+
 Disable-LocalUser -Name Test
 
 # Or
