@@ -20,8 +20,8 @@ if (!(Get-NetFirewallRule -Name 'PowerShell-Remoting-SSH' -ErrorAction SilentlyC
 New-ItemProperty -Path "HKLM:\SOFTWARE\OpenSSH" -Name DefaultShell -Value "C:\Program Files\PowerShell\7\pwsh.exe" -PropertyType String -Force
 
 # Add to SSH config ($env:ProgramData\ssh\sshd_config) manually
+Notepad $env:ProgramData\ssh\sshd_config
 #PasswordAuthentication yes
 
-# Connection test
-Test-NetConnection -ComputerName 192.168.0.5
-Test-NetConnection -ComputerName 192.168.0.5 -Port 22
+# Test
+Get-WinEvent -LogName 'OpenSSH/Operational' | Select-Object -First 10 | Format-List
