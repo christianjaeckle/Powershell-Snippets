@@ -2,4 +2,4 @@
 ssh admin@SERVERNAME
 
 # Test via PowerShell
-Enter-PSSession -HostName SERVERNAME
+Enter-PSSession -HostName SERVERNAME -SSHTransport
