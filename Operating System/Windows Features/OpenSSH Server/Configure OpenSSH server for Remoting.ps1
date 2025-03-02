@@ -23,5 +23,5 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\OpenSSH" -Name DefaultShell -Value "C:\Pr
 Notepad $env:ProgramData\ssh\sshd_config
 #PasswordAuthentication yes
 
-# Test
-Get-WinEvent -LogName 'OpenSSH/Operational' | Select-Object -First 10 | Format-List
+# Test for listing port
+Test-NetConnection -ComputerName Localhost -Port 22
