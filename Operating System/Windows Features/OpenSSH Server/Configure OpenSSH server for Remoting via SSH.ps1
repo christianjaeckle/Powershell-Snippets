@@ -4,9 +4,6 @@ Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
 # Start the sshd service automatically
 Set-Service -Name sshd -StartupType 'Automatic'
 
-# Start the sshd service
-Start-Service sshd
-
 # Confirm the Firewall rule is configured (automatically created by setup)
 if (!(Get-NetFirewallRule -Name 'PowerShell-Remoting-SSH' -ErrorAction SilentlyContinue | Select-Object Name, Enabled)) {
     Write-Output "Firewall Rule 'PowerShell Remoting via SSH' does not exist, creating it..."
@@ -22,6 +19,9 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\OpenSSH" -Name DefaultShell -Value "C:\Pr
 # Add to SSH config ($env:ProgramData\ssh\sshd_config) manually
 Notepad $env:ProgramData\ssh\sshd_config
 #PasswordAuthentication yes
+
+# Start the sshd service
+Start-Service sshd
 
 # Test for listing port
 Test-NetConnection -ComputerName Localhost -Port 22
