@@ -64,6 +64,9 @@ Add-AppxProvisionedPackage -Online -PackagePath $WinGet_MsixFilePath -LicensePat
 $AdmGrp_SID = New-Object System.Security.Principal.SecurityIdentifier('S-1-5-32-544')
 $AdmGrp = $AdmGrp_SID.Translate([System.Security.Principal.NTAccount])
 
+Start-Process -FilePath 'TakeOwn.exe' -ArgumentList '/F "C:\Program Files\WindowsApps" /R /A /D J' -WindowStyle Minimized -Wait
+Start-Process -FilePath 'ICacls.exe' -ArgumentList '"C:\Program Files\WindowsApps" /grant "*S-1-5-32-544:(F)" /T' -WindowStyle Minimized -Wait
+
 $WG_AppsVerPath = Get-ChildItem -Path $WG_AppPath -Directory
 foreach ($WG_AppVerPath in $WG_AppsVerPath) {
     $Acls = Get-Acl -Path $WG_AppVerPath.FullName
@@ -74,8 +77,12 @@ foreach ($WG_AppVerPath in $WG_AppsVerPath) {
 }
 
 # Environment Variable
-$WG_AppResPath = Resolve-Path -Path $WG_AppPath
-if ($WG_AppResPath) {
-    $WingetPath = $WG_AppResPath[-1].Path
+$WG_AppPath = Resolve-Path (Join-Path -Path $env:ProgramFiles -ChildPath 'WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe')
+
+if ($WG_AppPath) {
+    $WG_AppPath = $WG_AppPath[-1].Path
 }
-$ENV:PATH += ";$WingetPath"
+
+$Env:PATH += ";$WG_AppPath"
+$Env_PathSys = [System.Environment]::GetEnvironmentVariable('PATH', [System.EnvironmentVariableTarget]::Machine)
+$Env_PathSys += ";$WG_AppPath;"
