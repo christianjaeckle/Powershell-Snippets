@@ -1,3 +1,3 @@
 if (-not(Get-Module -Name Microsoft.WinGet.Client -ListAvailable)) {
-    Install-Module Microsoft.WinGet.Client -Scope AllUsers
+    Install-Module -Name Microsoft.WinGet.Client -Force -Repository PSGallery
 }
