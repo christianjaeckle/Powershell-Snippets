@@ -11,6 +11,53 @@
 
 #>
 
+function Resolve-UserLogonType {
+    Param($LogonType)
+    switch ($LogonType) {
+        '0' {
+            'Interactive'; break 
+        }
+        '2' {
+            'Interactive'; break 
+        }
+        '3' {
+            'Network'; break 
+        }
+        '4' {
+            'Batch'; break 
+        }
+        '5' {
+            'Service'; break 
+        }
+        '6' {
+            'Proxy'; break 
+        }
+        '7' {
+            'Unlock'; break 
+        }
+        '8' {
+            'Networkcleartext'; break 
+        }
+        '9' {
+            'NewCredentials'; break 
+        }
+        '10' {
+            'RemoteInteractive'; break 
+        }
+        '11' {
+            'CachedInteractive'; break 
+        }
+        '12' {
+            'CachedRemoteInteractive'; break 
+        }
+        '13' {
+            'CachedUnlock'; break 
+        }
+        Default {
+        }
+    }
+}
+
 function Resolve-UserLogonFailureReason {
     Param($FailureReason)
 
@@ -59,53 +106,6 @@ function Resolve-UserLogonFailureReason {
         }
         default {
             'Other'; break 
-        }
-    }
-}
-
-function Resolve-UserLogonType {
-    Param($LogonType)
-    switch ($LogonType) {
-        '0' {
-            'Interactive'; break 
-        }
-        '2' {
-            'Interactive'; break 
-        }
-        '3' {
-            'Network'; break 
-        }
-        '4' {
-            'Batch'; break 
-        }
-        '5' {
-            'Service'; break 
-        }
-        '6' {
-            'Proxy'; break 
-        }
-        '7' {
-            'Unlock'; break 
-        }
-        '8' {
-            'Networkcleartext'; break 
-        }
-        '9' {
-            'NewCredentials'; break 
-        }
-        '10' {
-            'RemoteInteractive'; break 
-        }
-        '11' {
-            'CachedInteractive'; break 
-        }
-        '12' {
-            'CachedRemoteInteractive'; break 
-        }
-        '13' {
-            'CachedUnlock'; break 
-        }
-        Default {
         }
     }
 }
