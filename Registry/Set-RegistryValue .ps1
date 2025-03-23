@@ -23,7 +23,7 @@ function Set-RegistryValue {
             Position = 2,
             Mandatory = $false,
             ValueFromPipeline = $true)]
-        [string]$Value,
+        $Value,
 
         [Parameter(
             Position = 3,
