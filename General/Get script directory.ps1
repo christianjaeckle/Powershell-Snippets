@@ -4,3 +4,6 @@ if($hostinvocation -ne $null) {
 else {
     Split-Path $script:MyInvocation.MyCommand.Path
 }
+
+# OR
+$PSScriptRoot
