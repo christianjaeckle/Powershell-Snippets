@@ -1,7 +1,7 @@
-$RootPath = "X:\Test folder"
+$RootPath = 'C:\Windows'
 
 Get-ChildItem $RootPath -Directory -Recurse | ForEach-Object {
-    If ((Get-ChildItem $_.FullName) -eq $null) {
-        Remove-Item -Path $_.FullName -Confirm:$false -Verbose -WhatIf
+    if((Get-ChildItem $_.FullName -ErrorAction SilentlyContinue) -eq $null) {
+        Remove-Item -Path $_.FullName -ErrorAction SilentlyContinue -Confirm:$true -WhatIf
     }
 }
