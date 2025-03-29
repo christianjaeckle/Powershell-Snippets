@@ -1,6 +1,6 @@
 if ((Get-CimInstance -ClassName 'Win32_ComputerSystem').HypervisorPresent -eq $true) {
-    Write-Output 'Hyper-V is available.'
+    Write-Output 'Hypervisor is available.'
 }
 else {
-    Write-Output 'Hyper-V is not available.'
+    Write-Output 'Hypervisor is not available.'
 }
