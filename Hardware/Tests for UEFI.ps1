@@ -1,0 +1,1 @@
+$env:firmware_type
