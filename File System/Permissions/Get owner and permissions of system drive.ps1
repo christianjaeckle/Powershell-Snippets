@@ -1,1 +1,1 @@
-Get-Acl 'C:\' | Format-List
+Get-Acl -Path 'C:\' | Format-List
