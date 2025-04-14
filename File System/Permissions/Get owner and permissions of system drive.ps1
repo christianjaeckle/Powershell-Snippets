@@ -1,1 +1,1 @@
-Get-Acl 'C:\' | Format-Table -Wrap
+Get-Acl 'C:\' | Format-List
