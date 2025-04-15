@@ -1,2 +1,2 @@
-# Get-WUInstall -MicrosoftUpdate -AcceptAll
+Get-WUInstall -MicrosoftUpdate -AcceptAll
 Install-WindowsUpdate -AcceptAll
