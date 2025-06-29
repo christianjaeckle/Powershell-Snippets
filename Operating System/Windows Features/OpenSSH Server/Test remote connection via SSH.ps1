@@ -1,5 +1,5 @@
 # Test via SSH (client)
-ssh admin@SERVERNAME
+ssh domain\admin@servername
 
 # Test via PowerShell
 Enter-PSSession -HostName SERVERNAME -SSHTransport
