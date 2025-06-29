@@ -19,6 +19,9 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\OpenSSH" -Name DefaultShell -Value "C:\Pr
 # Add to SSH config ($env:ProgramData\ssh\sshd_config) manually
 Notepad $env:ProgramData\ssh\sshd_config
 #PasswordAuthentication yes
+# Remove "AllowGroups administrators "openssh users""
+# Add "AllowGroups administrators "OpenSSH-Benutzer"" for German systems
+# Add "AllowGroups administrators "OpenSSH Users"" for English systems
 
 # Start the sshd service
 Start-Service sshd
